@@ -1,0 +1,11 @@
+# Hypr Notify CC — Configuration
+# Copy this file to ~/.config/hypr-notify-cc/config
+
+# Terminal window classes to detect focus (pipe-separated regex)
+# TERMINAL_CLASSES="com.mitchellh.ghostty|Alacritty|kitty|foot|wezterm"
+
+# Seconds to suppress duplicate Notification events after a Stop
+# STOP_DEDUP_WINDOW=3
+
+# Notification timeout in milliseconds (0 = never expire)
+# TIMEOUT=5000
