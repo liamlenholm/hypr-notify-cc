@@ -75,6 +75,14 @@ fi
 
 case "$EVENT" in
     Stop)
+        last_msg=$(echo "$DATA" | jq -r '.last_assistant_message // empty')
+        last_msg_lower=$(echo "$last_msg" | tr '[:upper:]' '[:lower:]')
+
+        # Detect intermediate progress updates (subagents still running)
+        if echo "$last_msg_lower" | grep -qE "waiting on [0-9]+ more|waiting for (results|remaining)|launched .* in parallel"; then
+            exit 0
+        fi
+
         send normal "$project" "Task complete"
         echo "$(date +%s)" > "$TIMEDIR/${session_id}.stop"
         ;;
