@@ -6,6 +6,8 @@ Get notified when Claude finishes a task or needs your attention — only when y
 
 ![Hyprland](https://img.shields.io/badge/Hyprland-blue) ![Mako](https://img.shields.io/badge/Mako-green) ![Claude Code](https://img.shields.io/badge/Claude%20Code-orange)
 
+![screenshot](https://i.imgur.com/KsAlY4M.jpeg)
+
 ## Features
 
 - Notifies on task completion
