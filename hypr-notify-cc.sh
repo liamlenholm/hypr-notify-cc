@@ -56,12 +56,12 @@ SOUND_VOLUME="${SOUND_VOLUME:-50}"
 send() {
     local urgency="$1" title="$2" body="$3"
 
-    # Store tmux session name so the click handler can switch to it
+    # Store tmux target so the click handler can switch to the right session and window
     if [[ -n "${TMUX_PANE:-}" ]] && command -v tmux &>/dev/null; then
-        local pane_session
-        pane_session=$(tmux display-message -t "$TMUX_PANE" -p '#{session_name}' 2>/dev/null || true)
-        if [[ -n "$pane_session" ]]; then
-            echo "$pane_session" > "$TIMEDIR/last_session"
+        local pane_target
+        pane_target=$(tmux display-message -t "$TMUX_PANE" -p '#{session_name}:#{window_index}' 2>/dev/null || true)
+        if [[ -n "$pane_target" ]]; then
+            echo "$pane_target" > "$TIMEDIR/last_session"
         fi
     fi
 

@@ -16,12 +16,12 @@ hyprctl dispatch focuswindow "class:com.mitchellh.ghostty" 2>/dev/null \
     || hyprctl dispatch focuswindow "class:kitty" 2>/dev/null \
     || true
 
-# Switch to the tmux session
+# Switch to the tmux session and window
 # We need to target the client explicitly since mako runs outside tmux
 if [[ -f "$SESSION_FILE" ]] && command -v tmux &>/dev/null; then
-    session=$(cat "$SESSION_FILE")
+    target=$(cat "$SESSION_FILE")
     client=$(tmux list-clients -F '#{client_name}' 2>/dev/null | head -1)
     if [[ -n "$client" ]]; then
-        tmux switch-client -c "$client" -t "$session" 2>/dev/null || true
+        tmux switch-client -c "$client" -t "$target" 2>/dev/null || true
     fi
 fi
