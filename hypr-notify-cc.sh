@@ -68,6 +68,11 @@ send() {
     notify-send -a "$APP_NAME" -u "$urgency" -r 19790 -t "$TIMEOUT" "${icon_args[@]}" "$title" "$body"
 }
 
+# Skip worktree subagent events
+if echo "$cwd" | grep -q '\.claude/worktrees/'; then
+    exit 0
+fi
+
 # Skip notifications if we're looking at this Claude session
 if is_focused; then
     exit 0
@@ -79,7 +84,7 @@ case "$EVENT" in
         last_msg_lower=$(echo "$last_msg" | tr '[:upper:]' '[:lower:]')
 
         # Detect intermediate progress updates (subagents still running)
-        if echo "$last_msg_lower" | grep -qE "waiting on [0-9]+ more|waiting for (results|remaining)|launched .* in parallel"; then
+        if echo "$last_msg_lower" | grep -qE "waiting on [0-9]+ more|waiting for (results|remaining)|launched .* in parallel|agents? still running|agent left running"; then
             exit 0
         fi
 
