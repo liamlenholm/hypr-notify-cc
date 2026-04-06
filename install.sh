@@ -25,6 +25,7 @@ mkdir -p "$INSTALL_DIR"
 cp "$SCRIPT_DIR/hypr-notify-cc.sh" "$HOOK_PATH"
 cp "$SCRIPT_DIR/hypr-notify-cc-open.sh" "$OPEN_PATH"
 cp "$SCRIPT_DIR/icon.png" "$INSTALL_DIR/icon.png"
+cp "$SCRIPT_DIR/notify.mp3" "$INSTALL_DIR/notify.mp3"
 chmod +x "$HOOK_PATH" "$OPEN_PATH"
 echo "  Installed scripts and icon to $INSTALL_DIR/"
 

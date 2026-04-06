@@ -49,6 +49,9 @@ is_focused() {
 }
 
 ICON_PATH="${ICON_PATH:-$HOME/.claude/hooks/icon.png}"
+SOUND_PATH="${SOUND_PATH:-$HOME/.claude/hooks/notify.mp3}"
+SOUND_ENABLED="${SOUND_ENABLED:-true}"
+SOUND_VOLUME="${SOUND_VOLUME:-50}"
 
 send() {
     local urgency="$1" title="$2" body="$3"
@@ -66,6 +69,10 @@ send() {
     [[ -f "$ICON_PATH" ]] && icon_args=(-i "$ICON_PATH")
 
     notify-send -a "$APP_NAME" -u "$urgency" -r 19790 -t "$TIMEOUT" "${icon_args[@]}" "$title" "$body"
+
+    if [[ "$SOUND_ENABLED" == "true" && -f "$SOUND_PATH" ]]; then
+        mpv --no-video --really-quiet --volume="$SOUND_VOLUME" "$SOUND_PATH" &>/dev/null &
+    fi
 }
 
 # Skip worktree subagent events

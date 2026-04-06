@@ -9,3 +9,12 @@
 
 # Notification timeout in milliseconds (0 = never expire)
 # TIMEOUT=5000
+
+# Enable notification sound (true/false)
+# SOUND_ENABLED=true
+
+# Path to notification sound file
+# SOUND_PATH="$HOME/.claude/hooks/notify.mp3"
+
+# Sound volume (0-100)
+# SOUND_VOLUME=50
