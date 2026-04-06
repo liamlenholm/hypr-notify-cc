@@ -24,6 +24,7 @@ Get notified when Claude finishes a task or needs your attention — only when y
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
 - `notify-send` (libnotify)
 - `jq`
+- `mpv` (for notification sound)
 - [Mako](https://github.com/emersion/mako) notification daemon
 - A supported terminal: [Ghostty](https://ghostty.org/), [Alacritty](https://alacritty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/), [foot](https://codeberg.org/dnkl/foot), or [WezTerm](https://wezfurlong.org/wezterm/) (configurable)
 
@@ -62,6 +63,12 @@ STOP_DEDUP_WINDOW=3
 
 # Notification timeout in milliseconds (0 = never expire)
 TIMEOUT=5000
+
+# Enable notification sound (true/false)
+SOUND_ENABLED=true
+
+# Sound volume (0-100)
+SOUND_VOLUME=50
 ```
 
 ## How it works

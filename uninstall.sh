@@ -31,7 +31,7 @@ if [[ -f "$SETTINGS_FILE" ]]; then
 fi
 
 # Remove scripts
-for f in "$HOOK_PATH" "$OPEN_PATH" "$HOME/.claude/hooks/icon.png"; do
+for f in "$HOOK_PATH" "$OPEN_PATH" "$HOME/.claude/hooks/icon.png" "$HOME/.claude/hooks/notify.mp3"; do
     if [[ -f "$f" ]]; then
         rm "$f"
         echo "  Removed $f"
